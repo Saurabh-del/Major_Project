@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Verify Yourself</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Concert+One|Oswald|Quicksand&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="contact-box">
+                <div class="left"></div>
+                <div class="right">
+                <form action="register" method="POST">
+                    {% csrf_token %}
+                    <h3 class="field">Verify Your Email</h3>
+                    <input type="text" class="field" placeholder="Enter Your OTP" name = 'otp'>
+                    <input type="hidden", name="usr", value="{{usr}}">
+                
+                    <div class="form-grounp">
+                        <button class="btn mainbtn" type="submit">Verify</button>
+                        <small class="float-right text-muted"><i><a href="send_otp" class="text-dark" 
+                          onclick="ReSendOTP('{{usr.username}}')"><i id="resendOTPmess">Resend</i> OTP</a></small>
+                    </div> 
+                </form>
+                </div>
+                {% for m in messages %}
+                <center><font color=" #8B8000"><h2>{{m}}</h2></font></center>
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+
+    <!-- <script>
+        function ReSendOTP(name)
+        {
+            
+        }
+    </script> -->
+</html>
